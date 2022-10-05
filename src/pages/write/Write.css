@@ -1,0 +1,95 @@
+.container {
+    position: relative;
+    width: 100%;
+}
+
+.Write {
+    display: absolute;
+    top: 0;
+    left: 0;
+    padding: var(--spacing-xl);
+    padding-right: var(--spacing-sm);
+    box-shadow: 0 0 0 whitesmoke;
+    transition: box-shadow 0.5s;
+    overflow: none;
+}
+
+.Write:hover {
+    box-shadow: -3px -3px 5px 4px whitesmoke;
+}
+
+.title {
+    margin-left: 1rem;
+    width: 80%;
+    height: 8vh;
+    opacity: 0.5;
+    font-size: 2.4rem;
+    transition: opacity 1s;
+}
+
+.body {
+    margin-left: 1rem;
+    padding: var(--spacing-sm);
+    height: calc(75vh - calc(2*var(--spacing-sm)));
+    width: 97%;
+    opacity: 0.5;
+    font-size: 1.4rem;
+    transition: opacity 1s, border-bottom 0.5s;
+    resize: none;
+    overflow-y: scroll;
+}
+
+.title, .body {
+    border: none;    
+}
+
+.title:focus, .body:focus {
+    opacity: 1;
+    border-bottom: 2px solid var(--color-primary-drk);
+    outline: none;
+}
+
+#btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: 4px solid black;
+    height: 6.5vh;
+    width: 20vh;
+    color: black;
+    background: transparent;
+    transition: backgroud 2s, box-shadow 1s;
+}
+
+#btn:hover{
+    box-shadow: 0 0 30px rgb(100, 255, 100), 0 0 60px rgb(100, 255, 100), 0 0 90px rgb(100, 255, 100);
+    background: rgb(100, 255, 100);
+    cursor: pointer;
+}
+
+::-webkit-scrollbar{
+    width: 0.75em;
+    opacity: 0.3;
+    cursor: pointer;
+}
+
+::-webkit-scrollbar-track{
+    background: #1f2833;
+}
+
+::-webkit-scrollbar-thumb{
+    background: rgba(128, 128, 128, 0.753);
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background: #c5c6c7c4;   
+}

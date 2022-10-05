@@ -1,0 +1,66 @@
+.Sidebar {
+    position: fixed;
+    right: 0;
+    top: 6vh;
+}
+
+.side-bar {
+    width: 20vw;
+    height: 83vh;
+    padding: var(--spacing-xl);
+    transition: box-shadow 0.5s;
+}
+
+.side-bar:hover {
+    box-shadow: 2px 0 6px 4px whitesmoke;
+}
+
+.side-bar > header {
+    padding: 1em;
+    transition: text-shadow 0.5s;
+}
+
+.side-bar > header:hover {
+    text-shadow: 3px 3px 4px whitesmoke;
+}
+
+.img-list {
+    width: 100%;
+    margin-top: 2rem;
+    height: 20%;
+}
+
+.img-list > header h3 {
+    text-align: center;
+    display: block;
+}
+
+/* Read-write toogle */
+.theme {
+    width: 100%;
+    display: grid;
+    place-items: center;
+    padding-bottom: 1rem;
+}
+
+.list-wrapper ul {
+    list-style: none;
+}
+
+.list-wrapper ul li {
+    padding: var(--spacing-sm) 0;
+}
+
+.contact-div {
+    text-align: center;
+}
+
+.contact-icons {
+    padding: 1rem;
+    font-size: var(--fontsize-lg);
+    color: var(--color-alternate-brg);
+}
+
+.contact-icons:hover {
+    cursor: pointer;
+}

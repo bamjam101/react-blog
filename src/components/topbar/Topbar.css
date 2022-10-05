@@ -11,8 +11,8 @@
     display: flex;
 }
 
-.Topbar header img {
-    padding: 0 1.5rem 0 0.5rem;
+.logo {
+    background: url("../../../public/imgs/logo.png");
     height: 40px;
     width: 40px;
     border-radius: 50%;

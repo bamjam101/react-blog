@@ -1,12 +1,14 @@
-import Topbar from "./topbar/Topbar";
+import Topbar from "./components/topbar/Topbar";
 import Home from "./pages/home/Home";
-import Footer from "./footer/Footer";
+import Write from "./pages/write/Write";
+import Register from "./pages/register/Register";
+import Footer from "./components/footer/Footer";
 
 const App = () => {
   return (
     <div className="App">
         <Topbar/>
-        <Home/>
+        <Write/>
         <Footer/>
     </div>
   );
