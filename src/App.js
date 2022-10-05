@@ -1,9 +1,13 @@
-import './App.css';
+import Topbar from "./topbar/Topbar";
+import Home from "./pages/home/Home";
+import Footer from "./footer/Footer";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-        <header>First React Website</header>
+        <Topbar/>
+        <Home/>
+        <Footer/>
     </div>
   );
 }

@@ -1,0 +1,19 @@
+.Footer {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.foot {
+    display: block;
+    text-align: center;
+}
+
+.contact-icons {
+    padding: 1rem;
+    font-size: var(--fontsize-lg);
+    color: var(--color-alternate-brg);
+}
+
+.contact-icons:hover {
+    cursor: pointer;
+}

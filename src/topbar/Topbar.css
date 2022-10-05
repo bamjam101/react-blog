@@ -1,0 +1,33 @@
+
+.Topbar {
+    background-color: rgab(0,0,0,0.5);
+    height: 6vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Topbar header {
+    display: flex;
+}
+
+.Topbar header img {
+    padding: 0 1.5rem 0 0.5rem;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.Topbar nav ul{
+    display: flex;
+}
+
+.Topbar nav ul li {
+    padding: 0 1rem;
+    list-style: none;
+    color: black;
+}
+
+.Topbar nav ul a {
+    text-decoration: none;
+}
