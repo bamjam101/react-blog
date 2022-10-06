@@ -5,7 +5,7 @@
 }
 
 .side-bar {
-    width: 20vw;
+    width: 22vw;
     height: 83vh;
     padding: var(--spacing-xl);
     transition: box-shadow 0.5s;

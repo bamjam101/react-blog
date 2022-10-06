@@ -1,0 +1,124 @@
+.Login {
+    display: flex;
+    justify-content: center;
+    height: 90vh;
+    align-items: center;
+}
+.formTwo {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.25);
+    padding: var(--spacing-lg);
+    display: flex;
+    justify-content: center;
+    border-radius: 1rem;
+    z-index: 2;
+    transition: 1s;
+}
+
+.formTwo:hover {
+    box-shadow: 0 0.5rem 0 -0.25rem #C5C6C7, 0 1rem 0 -0.5rem #45A29E, 0 1.35rem 0 -0.75rem #66fcf1;
+}
+
+.formTwo form {
+    position: relative;
+    display: block;
+    width: 95%;
+    height: 100%;
+}
+
+.formTwo form label {
+    font-family: consolas;
+    position: relative;
+    display: flex;
+    color: var(--color-primary-drk);
+    font-size: var(--fontsize-rg);
+    padding: 3px;
+    transition: 1s;
+    opacity: 0;
+}
+
+.icon {
+    opacity: 0;
+}
+
+.formTwo input {
+    display: flex;
+    justify-content: center;
+    color: var(--color-alternate-brg);
+    background-color: #1F2833;
+    margin: 1.2vh 0;
+    border: rgba(0,0,0,0.5) 0.1vh solid;
+    border-radius: 0.6rem;
+    opacity: 0;
+    transition: 1s;
+}
+
+.checkbox-wrapper {
+    display: grid;
+    grid-template-columns: 0.9fr 0.1fr;
+}
+
+.checkbox span {
+    font-size: var(--fontsize-sm);
+}
+
+.check {
+    height: 1.4rem;
+    width: 1.4rem;
+}
+
+#username, #password {
+    height: 4vh;
+    width: 100%;
+    text-align: center;
+}
+
+.formTwo:hover input {
+    opacity: 1;
+}
+
+.formTwo:hover form label, .formTwo:hover .icon {
+    opacity: 1;
+}
+
+.btn-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.formTwo form button {
+    border: 0;
+    overflow: hidden;
+    color: var(--color-primary-brg);
+    background-color: var(--color-alternate-brg);
+    border-radius: 0.2rem;
+    clip-path: polygon(85% 0, 100% 50%, 85% 100%, 0% 100%, 20% 53%, 0% 0%);
+    background-position: center;
+    background-size: cover;
+    font-size: var(--fontsize-rg);
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: var(--spacing-rg) var(--spacing-xl);
+    transition: 1s;
+}
+.formTwo form button:hover {
+    font-weight: bold;
+    color: black;
+    margin-left: var(--spacing-sm);
+    transform: translateY(-5px);
+    border-radius: 6em;
+    background: #66fcf1;
+    box-shadow: 0 0 10px #66fcf1, 0 0 40px #66fcf1, 0 0 80px #66fcf1;
+}
+
+.formTwo form a {
+    transform: translateY(3px);
+    color: var(--color-primary-drk);
+    padding-left: var(--spacing-sm);
+    font-size: var(--fontsize-sm);
+    letter-spacing: 0.5px;
+}

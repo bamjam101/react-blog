@@ -1,20 +1,16 @@
-.container {
-    position: relative;
-    width: 100%;
-}
-
 .Write {
     display: absolute;
-    top: 0;
+    height: 88vh;
+    width: 75%;
+    top: 6vh;
     left: 0;
     padding: var(--spacing-xl);
     padding-right: var(--spacing-sm);
-    box-shadow: 0 0 0 whitesmoke;
     transition: box-shadow 0.5s;
     overflow: none;
 }
 
-.Write:hover {
+.container:hover {
     box-shadow: -3px -3px 5px 4px whitesmoke;
 }
 
@@ -28,7 +24,7 @@
 }
 
 .body {
-    margin-left: 1rem;
+    margin: var(--spacing-xl) 0 0 var(--spacing-sm);
     padding: var(--spacing-sm);
     height: calc(75vh - calc(2*var(--spacing-sm)));
     width: 97%;
@@ -47,6 +43,14 @@
     opacity: 1;
     border-bottom: 2px solid var(--color-primary-drk);
     outline: none;
+}
+
+.title:hover {
+    outline: none;
+}
+
+.doc-title {
+    position: relative;
 }
 
 #btn {

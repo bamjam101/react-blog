@@ -1,5 +1,8 @@
 .Header {
-    width: 100%;
+    display: absolute;
+    top: 6vh;
+    left: 0;
+    width: 75%;
     height: 40vh;
     opacity: 0.5;
     background: url("../../../public/imgs/header.jpg");
@@ -7,6 +10,7 @@
     background-position: center;
     transition: 2.5s;
     background-repeat: no-repeat;
+    overflow: hidden;
 }
 
 .Header:hover {

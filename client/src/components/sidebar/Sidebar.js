@@ -3,16 +3,16 @@ import "./Sidebar.css";
 export default function Sidebar() {
   return (
     <div className="Sidebar">
-        <section class="side-bar">
-            <header class="page-header">
+        <section className="side-bar">
+            <header className="page-header">
                 <h1>Skriible</h1>
             </header>
-            <div class="img-list">
+            <div className="img-list">
                 <header>
                     <h3>Select</h3>
                 </header>
             </div>
-            <div class="theme">
+            <div className="theme">
                 <header>
                     <h3>Choose Theme To Filter Blogs</h3>
                 </header>

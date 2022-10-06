@@ -23,11 +23,11 @@
         --fontsize-lg: 1.5rem;
         --fontsize-xl: 2rem;
 
-        --color-primary-drk:  #141414;
+        --color-primary-drk: #141414;
         --color-alternate-drk: #301944;
 
-        --color-primary-brg: #FFF;
-        --color-alternate-brg: #C5C6C7;
+        --color-primary-brg: #fff;
+        --color-alternate-brg: #c5c6c7;
 
         --spacing-sm: 0.5rem;
         --spacing-rg: 0.8rem;
@@ -43,6 +43,32 @@
       body {
         box-sizing: border-box;
         font-family: consolas;
+      }
+
+      .main-container {
+        position: relative;
+        height: 90vh;
+        width: 100%;
+      }
+
+      /* ==================Scroolbar================== */
+
+      ::-webkit-scrollbar {
+        width: 0.75em;
+      }
+
+      ::-webkit-scrollbar-track {
+        border-radius: 100vw;
+        background: #1f2833;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: rgba(128, 128, 128, 0.753);
+        border-radius: 100vw;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #c5c6c7c4;
       }
     </style>
   </head>
