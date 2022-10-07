@@ -1,14 +1,14 @@
 .Header {
-    display: absolute;
-    top: 6vh;
-    left: 0;
-    width: 75%;
-    height: 40vh;
+    height: 30vh;
     opacity: 0.5;
     background: url("../../../public/imgs/header.jpg");
-    background-size: 200%;
+    background-size: 150%;
     background-position: center;
     transition: 2.5s;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     background-repeat: no-repeat;
     overflow: hidden;
 }
@@ -21,10 +21,7 @@
 .Header h1 {
     font-weight: bold;
     font-size: 2rem;
-    display: flex;
-    padding: 16vh 0 10vh 0;
-    justify-content: center;
-    align-items: center;
+    
     color: var(--color-primary-brg);
 }
 

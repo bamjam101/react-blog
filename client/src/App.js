@@ -4,11 +4,12 @@ import Write from "./pages/write/Write";
 import Register from "./pages/register/Register";
 import Login from "./pages/login/Login";
 import Account from "./pages/account/Account";
+import Single from "./pages/single/Single";
 import Footer from "./components/footer/Footer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const App = () => {
-  const user = true;
+  const user = false;
   return (
     <Router>
       <div className="App">
@@ -16,6 +17,7 @@ const App = () => {
         <main className="main-container">
           <Routes>
             <Route exact path="/" element={<Home/>} />
+            <Route path="/single" element={<Single/>} />
             {user? <Route path="/register" element={<Home/>} /> : <Route path="/register" element={<Register/>} />}
             {user? <Route path="/login" element={<Home/>} /> : <Route path="/login" element={<Login/>} />}
             {user? <Route path="/write" element={<Write/>} /> : <Route path="/write" element={<Register/>} />}

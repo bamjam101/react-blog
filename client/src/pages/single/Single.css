@@ -1,0 +1,10 @@
+.Single {
+    height: 88.5vh;
+}
+
+.blog-preview {
+    height: 100%;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+}
