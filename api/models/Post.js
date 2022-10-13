@@ -9,10 +9,9 @@ const PostSchema = new mongoose.Schema(
     },
     desc: {
       type: String,
-      required: true,
-      unique: true,
+      required: true
     },
-    theme: {
+    photo: {
       type: String,
       required: false,
     },

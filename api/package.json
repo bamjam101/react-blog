@@ -1,18 +1,29 @@
 {
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.6.5",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^2.0.20",
+    "path": "^0.12.7"
+  },
   "name": "bloggie-api",
   "version": "1.0.0",
-  "description": "An API for Bloggie Website.",
-  "main": "app.js",
+  "description": "REST api for Blog website.",
+  "main": "index.js",
+  "devDependencies": {},
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bamjam101/react-blog.git"
   },
   "author": "bamjam101",
   "license": "ISC",
-  "dependencies": {
-    "bcrypt": "^5.0.1",
-    "dotenv": "^16.0.3",
-    "express": "^4.18.1",
-    "mongoose": "^6.6.5",
-    "multer": "^1.4.5-lts.1"
-  }
+  "bugs": {
+    "url": "https://github.com/bamjam101/react-blog/issues"
+  },
+  "homepage": "https://github.com/bamjam101/react-blog#readme"
 }
