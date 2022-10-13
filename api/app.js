@@ -2,7 +2,8 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
+const multer = require("multer");
+const path = require("path");
 
 const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
@@ -13,12 +14,8 @@ const categoryRoute = require("./routes/categories");
 dotenv.config();
 // allows to send json to server as request and also to retreive response in json form, simply for allowing translation of json in body
 app.use(express.json());
-//body-parser allows to read data from the url itself
-app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
-);
+//adding path for storing image files when uploaded
+app.use("/images", express.static(path.join(__dirname, "/images")));
 //mongoose connection statement
 mongoose
   .connect(process.env.MONGO_URL, {
@@ -27,16 +24,34 @@ mongoose
   })
   .then((result) => {
     //app listens only when our database and backend connection is established
-    console.log("connected to Mongo!")
-    app.listen(5001);
+    console.log("connected to Mongo!");
   })
   .catch((err) => {
     //error handling  TODO
     console.log(err);
   });
 
+//Configuring storage and upload path
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "images");
+  },
+  filename: (req, file, cb) => {
+    cb(null, req.body.name);
+  },
+});
+
+const upload = multer({ storage: storage });
+app.post("/api/upload", upload.single("file"), (req, res) => {
+  res.status(200).json("File has been uploaded");
+});
+
 //route handlers for different end-points
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/categories", categoryRoute);
+
+app.listen("5000", () => {
+  console.log("Listening on port 5000");
+});

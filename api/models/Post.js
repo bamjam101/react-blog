@@ -9,7 +9,7 @@ const PostSchema = new mongoose.Schema(
     },
     desc: {
       type: String,
-      required: true
+      required: true,
     },
     photo: {
       type: String,
@@ -27,4 +27,4 @@ const PostSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("User", PostSchema);
+module.exports = mongoose.model("Post", PostSchema);
