@@ -3,7 +3,7 @@ const User = require("../models/User");
 const Post = require("../models/Post");
 const bcrypt = require("bcrypt");
 
-//POST new blog route handler
+//POST new blog post route handler
 router.post("/", async (req, res) => {
   const newPost = new Post(req.body);
   try {
@@ -14,7 +14,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-//UPDATE blog route handler
+//UPDATE blog post route handler
 router.put("/:id", async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
@@ -39,7 +39,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-//DELETE blog route handler
+//DELETE blog post route handler
 router.delete("/:id", async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
@@ -58,7 +58,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-// GET POST
+// GET blog post
 router.get("/:id", async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
@@ -68,7 +68,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-//GET all blogs route handler
+//GET all blog posts route handler
 router.get("/", async (req, res) => {
   const username = req.query.user;
   const catname = req.query.cat;
