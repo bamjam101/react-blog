@@ -12,7 +12,7 @@
 }
 
 .side-bar:hover {
-    box-shadow: 2px 0 6px 4px whitesmoke;
+    box-shadow: -2px 4px 10px whitesmoke;
 }
 
 .side-bar > header {
@@ -44,11 +44,13 @@
 }
 
 .list-wrapper ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     list-style: none;
 }
 
 .list-wrapper ul li {
-    padding: var(--spacing-sm) 0;
+    padding: var(--spacing-sm) var(--spacing-xl);
 }
 
 .contact-div {
@@ -58,7 +60,7 @@
 .contact-icons {
     padding: 1rem;
     font-size: var(--fontsize-lg);
-    color: var(--color-alternate-brg);
+    color: var(--color-alternate-drk);
 }
 
 .contact-icons:hover {

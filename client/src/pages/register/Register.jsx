@@ -1,25 +1,46 @@
+import { useState } from "react";
+import axios from "axios";
 import "./Register.css";
 
 export default function Register() {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError(false);
+    try{
+      const res = await axios.post('/auth/register', {
+        username, email, password,
+      })
+      res.data && window.location.replace("/login")
+    } catch(err) {
+      setError(true);
+    }
+  }
   return (
     <div className="Register">
       <main className="container">
-        <div className="form" id="proceed">
-          <form name="inputForm">
+        <div className="form">
+          <form name="inputForm" onSubmit={handleSubmit}>
             <label>UserName</label>
             <input
               id="username"
               name="username"
               type="text"
-              placeholder="Create an username"
+              placeholder="Create Username..."
+              onChange={(e) => setUsername(e.target.value)}
               required
             />
-            <label for="email">E-mail</label>
+            <label>E-mail</label>
             <input
               id="email"
               name="email"
               type="text"
-              placeholder="Type here..."
+              placeholder="Enter Email..."
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
             <label>Set Password</label>
@@ -27,28 +48,30 @@ export default function Register() {
               id="password"
               name="password"
               type="password"
-              placeholder="Create a password"
+              placeholder="New Password..."
+              onChange={(e) => setPassword(e.target.value)}
               required
             />
 
-            <label>Confirm Password</label>
+            {/* <label>Confirm Password</label>
             <input
               id="confirmPass"
               name="password"
               type="password"
               placeholder="Confirm your password"
               required
-            />
+            /> */}
 
             <div className="button">
-              <a id="proceedBtn">
+              <button id="proceedBtn" type="submit">
                 <span className="hover">Hover Here</span>
                 <span className="change">Register</span>
-              </a>
+              </button>
             </div>
           </form>
         </div>
       </main>
+        {error && <span style={{ color: "red", width: "100%", marginTop: "100px", textAlign: "center", margin: "auto", display:"block" }}>Something Went Wrong. Kindly Refresh!</span>}
     </div>
   );
 }

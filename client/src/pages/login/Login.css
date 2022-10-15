@@ -115,6 +115,11 @@
     box-shadow: 0 0 10px #66fcf1, 0 0 40px #66fcf1, 0 0 80px #66fcf1;
 }
 
+.formTwo form button:disabled {
+    cursor: not-allowed;
+    background-color: black;
+}
+
 .formTwo form a {
     transform: translateY(3px);
     color: var(--color-primary-drk);

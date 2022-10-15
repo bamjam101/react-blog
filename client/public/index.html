@@ -1,84 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="Jam's Portfolio"
-      content="You are one click away from meeting a web developer for all your development needs."
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <title>Bloggie App</title>
-    <style>
-      :root {
-        --fontsize-sm: 0.8rem;
-        --fontsize-rg: 1rem;
-        --fontsize-lg: 1.5rem;
-        --fontsize-xl: 2rem;
 
-        --color-primary-drk: #141414;
-        --color-alternate-drk: #301944;
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="Jam's Portfolio"
+    content="You are one click away from meeting a web developer for all your development needs." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Bloggie App</title>
+  <style>
+    :root {
+      --fontsize-sm: 0.8rem;
+      --fontsize-rg: 1rem;
+      --fontsize-lg: 1.5rem;
+      --fontsize-xl: 2rem;
 
-        --color-primary-brg: #fff;
-        --color-alternate-brg: #c5c6c7;
+      --theme: linear-gradient(45deg,
+          #b7d1eb,
+          #8e98a4,
+          #4b9a96,
+          #8be7e1,
+          #7ab8de);
 
-        --spacing-sm: 0.5rem;
-        --spacing-rg: 0.8rem;
-        --spacing-lg: 1rem;
-        --spacing-xl: 1.5rem;
+      --color-primary-drk: #141414;
+      --color-alternate-drk: #301944;
+
+      --color-primary-brg: #fff;
+      --color-alternate-brg: #c5c6c7;
+
+      --spacing-sm: 0.5rem;
+      --spacing-rg: 0.8rem;
+      --spacing-lg: 1rem;
+      --spacing-xl: 1.5rem;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      box-sizing: border-box;
+      font-family: consolas;
+      min-height: 100vh;
+      background-image: var(--theme);
+      background-size: 300%;
+      background-repeat: no-repeat;
+      background-position: left;
+      animation: flow 20s infinite alternate;
+    }
+
+    @keyframes flow {
+      0% {
+        background-position: left;
       }
 
-      * {
-        margin: 0;
-        padding: 0;
+      100% {
+        background-position: right;
       }
+    }
 
-      body {
-        box-sizing: border-box;
-        font-family: consolas;
-      }
+    .main-container {
+      position: relative;
+      height: 90vh;
+      width: 100%;
+    }
 
-      .main-container {
-        position: relative;
-        height: 90vh;
-        width: 100%;
-      }
+    .link {
+      text-decoration: none;
+      color: inherit;
+    }
 
-      .link {
-        text-decoration: none;
-        color: inherit;
-      }
+    /* ==================Scroolbar================== */
 
-      /* ==================Scroolbar================== */
+    ::-webkit-scrollbar {
+      width: 0.75em;
+    }
 
-      ::-webkit-scrollbar {
-        width: 0.75em;
-      }
+    ::-webkit-scrollbar-track {
+      border-radius: 100vw;
+      background: #1f2833;
+    }
 
-      ::-webkit-scrollbar-track {
-        border-radius: 100vw;
-        background: #1f2833;
-      }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(128, 128, 128, 0.753);
+      border-radius: 100vw;
+    }
 
-      ::-webkit-scrollbar-thumb {
-        background: rgba(128, 128, 128, 0.753);
-        border-radius: 100vw;
-      }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #c5c6c7c4;
+    }
+  </style>
+</head>
 
-      ::-webkit-scrollbar-thumb:hover {
-        background: #c5c6c7c4;
-      }
-    </style>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-  </body>
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+</body>
+
 </html>
