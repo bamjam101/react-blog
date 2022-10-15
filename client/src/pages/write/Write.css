@@ -1,38 +1,55 @@
 .Write {
-    display: absolute;
     height: 88vh;
-    width: 75%;
-    top: 6vh;
-    left: 0;
+    width: 75vw;
     padding: var(--spacing-xl);
     padding-right: var(--spacing-sm);
     transition: box-shadow 0.5s;
-    overflow: none;
+    overflow: hidden;
 }
 
-.container:hover {
-    box-shadow: -3px -3px 5px 4px whitesmoke;
+.photo-wrapper {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+    width: 70%;
+    opacity: 80%;
+    transition: opacity 0.5s, width 0.5s;
+}
+
+.photo-wrapper:hover {
+    opacity: 100%;
+    width: 90%;
+}
+
+.blog-photo {
+    display: block;
+    margin: auto;
 }
 
 .title {
-    margin-left: 1rem;
-    width: 80%;
+    width: 70%;
     height: 8vh;
     opacity: 0.5;
     font-size: 2.4rem;
     transition: opacity 1s;
+    border-bottom-right-radius: 1rem;
 }
 
 .body {
-    margin: var(--spacing-xl) 0 0 var(--spacing-sm);
+    margin-top: var(--spacing-xl);
     padding: var(--spacing-sm);
-    height: calc(75vh - calc(2*var(--spacing-sm)));
-    width: 97%;
+    min-height: 45vh;
+    width: 90%;
     opacity: 0.5;
     font-size: 1.4rem;
     transition: opacity 1s, border-bottom 0.5s;
     resize: none;
     overflow-y: scroll;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
 }
 
 .title, .body {
