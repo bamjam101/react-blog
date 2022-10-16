@@ -38,7 +38,7 @@ const App = () => {
           <Route path="/register" element={user ? <Home /> : <Register />} />
           <Route path="/login" element={user ? <Home /> : <Login />} />
           <Route path="/write" element={user ? <Write /> : <Register />} />
-          <Route path="/settings" element={user ? <Account /> : <Register />} />
+          <Route path="/account" element={user ? <Account /> : <Register />} />
           <Route path="/post/:postId" element={<Single />} />
         </Routes>
       </div>

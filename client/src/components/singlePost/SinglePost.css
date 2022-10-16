@@ -5,15 +5,40 @@
 .blog-preview {
     height: 100%;
     width: 75%;
+    position: relative;
     display: flex;
     flex-direction: column;
 }
 
 .redirect-container {
     display: flex;
-    padding: var(--spacing-xl) 0;
-    justify-content: space-around;
+    padding: var(--spacing-xl);
+    justify-content: space-between;
     align-items: center;
+}
+
+.blog-photo {
+    width: 75vw;
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.blog-wrapper img {
+    width: 100%;
+    height: 100%;
+}
+
+.blog-photo img{
+    width: 75vw;
+    height: 50vh;
+    transition: height 0.5s, width 0.5s;
+}
+
+.blog-photo:hover img {
+    height: 100%;
+    width: 80%;
 }
 
 .update-delete-container {

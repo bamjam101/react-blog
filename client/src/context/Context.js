@@ -15,7 +15,7 @@ export const ContextProvider = ({ children }) => {
 
     useEffect(()=> {
         localStorage.setItem("user", JSON.stringify(state.user))
-    }, [state])
+    }, [state.user])
     return (
         <Context.Provider
             value={{

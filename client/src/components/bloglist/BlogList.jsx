@@ -7,7 +7,7 @@ export default function BlogList({ blogs }) {
         <div className="bloglist">
             {blogs.map(blog => {
                 return (
-                    <Blog blog={blog} />
+                    <Blog key={blog._id} blog={blog} />
                 )
             })}
         </div>

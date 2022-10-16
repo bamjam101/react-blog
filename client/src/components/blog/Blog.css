@@ -1,4 +1,5 @@
 .Blog {
+    position: relative;
     height: 35vh;
     width: 35vh;
     padding: var(--spacing-lg);
@@ -16,8 +17,14 @@
     box-shadow: 0 4px 10px var(--color-primary-brg), 0 6px 12px var(--color-alternate-brg), 0 8px 14px var(--color-primary-drk);
 }
 .Blog .img-wrapper {
+    overflow: hidden;
+    height: 20vh;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+.Blog .img-wrapper img {
     width: 100%;
-    height: 10vh;
 }
 .Blog header {
     width:100%;

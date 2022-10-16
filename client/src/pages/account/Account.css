@@ -1,7 +1,5 @@
 .Account {
     width: 100%;
-    min-height: 88vh;
-    background: #0B0C10;
     animation: slide 2s;
     animation-fill-mode: forwards;
 }
@@ -16,24 +14,35 @@
     }
 }
 
-.container {
+.account-container {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    width: 100%;
     flex-direction: column;
 }
 
+.profile-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .profile {
-    height: 30vh;
     transition-duration: 1s;
 }
 
 .profile img{ 
-    margin: 6vh;
-    height: 20vh;
-    width: 20vh;
+    margin: 1vh;
+    height: 14vh;
+    width: 14vh;
     border-radius: 50%;
     transform: none;
     z-index: auto;
-    background-size: cover;
+    object-fit: cover;
     background-color: rgba(0,0,0,0);
     transition: 1s;
 }
@@ -43,80 +52,66 @@
     box-shadow:0 0 4px #66fcf1, 0 0 6px #66fcf1, 0 0 8px #66fcf1;
 }
 
+.Account label {
+    display: block;
+}
 .username {
-    display: flex;
-    margin-left: 3vh;
-    padding: 4vh;
-    color: white;
+    display: grid;
+    width: 50%;
+    grid-template-columns: 1fr 1fr;
+    padding: 1vh;
+    color: var(--color-primary-drk);
     text-shadow: 1px 1px 0 2px white;
     font-size: var(--fontsize-rg);
 }
 
-.username p {
-    display: absolute;
-    margin-left: 40vw;
-    font-size: var(--fontsize-rg);
 
+.username p {
+    font-size: var(--fontsize-rg);
 }
 
 .email {
-    display: flex;
-    margin-left: 3vh;
-    text-align: center;
-    padding: 4vh;
-    color: white;
+    display: grid;
+    width: 50%;
+    grid-template-columns: 1fr 1fr;
+    color: var(--color-primary-drk);
     text-shadow: 1px 1px 0 2px white;
     font-size: var(--fontsize-rg);
 }
 
 .email p {
-    display: absolute;
-    margin-left: 38vw;
     font-size: var(--fontsize-rg);
 }
 
-.bio {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4vh;
-    color: white;
-    display: auto;
+.password {
+    display: grid;
+    width: 50%;
+    margin-top: var(--spacing-sm);
+    grid-template-columns: 1fr 1fr;
+    color: var(--color-primary-drk);
     text-shadow: 1px 1px 0 2px white;
-    transition: 1s;
     font-size: var(--fontsize-rg);
 }
 
-.bio img {
-    height: 1.75rem;
-    width: 1.75rem;
-    background-size: cover;
-    margin-bottom: 2vh;
+.password p {
+    font-size: var(--fontsize-rg);
 }
 
-.bio input {
-    margin-left: 10px;
+.account-settings {
     width: 100%;
-    height: 20vh;
-    border: none;
-    background-color: #0B0C10;
-    color: white;
-    font-size: var(--fontsize-rg);
-    transition: box-shadow 1s;
+    height: 10vh;
+    text-align: center;
 }
 
-.bio input:hover {
-    box-shadow: 0 0 4px #66fcf1, 0 0 6px #66fcf1, 0 0 8px #66fcf1;
+.account-settings .btn {
+    display: block;
+    margin: auto;
 }
-
-
-
 /* =====================Editor btn===================== */
 .editor {
-    margin-top: -4vh;
+    overflow: hidden;
     width: 100%;
-    height: 50vh;
-    opacity: 0.2;
+    height: 45vh;
     background: url("../../../public/imgs/header.jpg");
     background-position: left;
     transition: 2.5s;
@@ -142,7 +137,7 @@
     color: white;
 }
 
-.editor a {
+.editor button {
     position: relative;
     display: inline-block;
     font-size: var(--fontsize-lg);
@@ -166,7 +161,7 @@
     transition-delay: 1s;
 }
 
-.editor a span {
+.editor button span {
     position: absolute;
     display: block;
 }
@@ -179,12 +174,12 @@
     background: linear-gradient(90deg,transparent,white);
 }
 
-.editor a:hover span:nth-child(1) {
+.editor button:hover span:nth-child(1) {
     left: 100%;
     transition: 1s;
 }
 
-.editor a span:nth-child(2) {
+.editor button span:nth-child(2) {
     right: 0;
     top: -100%;
     height: 100%;
@@ -192,13 +187,13 @@
     background: linear-gradient(180deg,transparent,white);
 }
 
-.editor a:hover span:nth-child(2) {
+.editor button:hover span:nth-child(2) {
     top: 100%;
     transition: 1s;
     transition-delay: 0.25s;
 }
 
-.editor a span:nth-child(3) {
+.editor button span:nth-child(3) {
     bottom: 0;
     right: -100%;
     height: 2px;
@@ -206,13 +201,13 @@
     background: linear-gradient(270deg,transparent,white);
 }
 
-.editor a:hover span:nth-child(3) {
+.editor button:hover span:nth-child(3) {
     right: 100%;
     transition: 1s;
     transition-delay: 0.5s;
 }
 
-.editor a span:nth-child(4) {
+.editor button span:nth-child(4) {
     left: 0;
     bottom: -100%;
     height: 100%;
@@ -220,7 +215,7 @@
     background: linear-gradient(360deg,transparent,white);
 }
 
-.editor a:hover span:nth-child(4) {
+.editor button:hover span:nth-child(4) {
     bottom: 100%;
     transition: 1s;
     transition-delay: 0.75s;
@@ -319,7 +314,7 @@
         margin-left: 25vw;
     }
 
-    .editor a {
+    .editor button {
         margin-left: 35vw;
     }
 }

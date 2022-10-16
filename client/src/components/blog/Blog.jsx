@@ -3,11 +3,12 @@ import "./Blog.css";
 import {Link} from "react-router-dom";
 
 export default function Blog({blog}) {
+    const PF = "http://localhost:5000/images/";
     return(
         <div className="Blog">
             <Link className="link" to={`/post/${blog._id}`}>
                 <div className="img-wrapper">
-                    {blog.photo && <img src={blog.photo} alt="blog-theme-img" />}
+                    {blog.photo && <img src={PF + blog.photo} alt="blog-theme-img" />}
                 </div>
                 <header>
                     <h3>{blog.title}</h3>

@@ -1,4 +1,5 @@
 .Write {
+    position: relative;
     height: 88vh;
     width: 75vw;
     padding: var(--spacing-xl);
@@ -7,20 +8,28 @@
     overflow: hidden;
 }
 
+.preview img {
+    width: 100vw;
+}
+
 .photo-wrapper {
+    width: 50vw;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+    place-content: center;
     height: 30vh;
-    width: 70%;
+}
+
+.photo-wrapper img {
     opacity: 80%;
     transition: opacity 0.5s, width 0.5s;
 }
 
-.photo-wrapper:hover {
+.photo-wrapper img:hover {
     opacity: 100%;
-    width: 90%;
+    width: 100%;
 }
 
 .blog-photo {
@@ -29,7 +38,7 @@
 }
 
 .title {
-    width: 70%;
+    width: 50vw;
     height: 8vh;
     opacity: 0.5;
     font-size: 2.4rem;
@@ -73,7 +82,7 @@
 #btn {
     position: absolute;
     top: 0;
-    right: 0;
+    right: 6vw;
     border: none;
     margin: 1rem;
     display: flex;
