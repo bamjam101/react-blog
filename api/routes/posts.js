@@ -68,6 +68,29 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+
+router.post("/like/:id", async (req,res) => {
+  try{
+    const {id} = req.params;
+    const username = req.body.username;
+
+    const post = await Post.findById(id);
+    
+    if(post.liked.includes(username)) {
+      await post.updateOne({$pull: {
+        liked: username
+      }});
+      res.status(200).json("Post has been liked!");
+    } else {
+      await post.updateOne({$push: {
+        liked:username
+      }});
+    }
+  } catch(err) {
+    res.status(500).json(err);
+  }
+});
+
 //GET all blog posts route handler
 router.get("/", async (req, res) => {
   const username = req.query.user;

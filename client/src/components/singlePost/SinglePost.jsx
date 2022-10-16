@@ -17,7 +17,10 @@ export default function Single() {
 
     const [title, setTitle] = useState("");
     const [desc, setDesc] = useState("");
+    const [like, setLike] = useState("");
     const [updateMode, setUpdateMode] = useState(false);
+
+    const [isLiked, setIsLiked] = useState(false);
 
     const handleDelete = async () => {
         try {
@@ -37,6 +40,16 @@ export default function Single() {
             });
             setUpdateMode(false);
         } catch (err) {
+            console.log(err);
+        }
+    };
+
+    const likeBtn = document.getElementsByClassName("like-btn");
+    console.log(likeBtn)
+    const handleLike = async () => {
+        try{
+            
+        } catch(err) {
             console.log(err);
         }
     }
@@ -78,7 +91,7 @@ export default function Single() {
                                         setUpdateMode(true)
                                     }}></i>
                                     <i className="btn del-btn fa-regular fa-trash-can" onClick={handleDelete}></i>
-                                </>) : null
+                                </>) : <i style={{backgroundColor: "transparent"}} className="btn like-btn fa-regular fa-heart" onClick={handleLike}></i>
                         }
                     </div>
                 </div>

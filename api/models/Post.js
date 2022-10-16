@@ -23,6 +23,14 @@ const PostSchema = new mongoose.Schema(
       type: Array,
       required: false,
     },
+    liked: {
+      type: Array,
+      default: []
+    },
+    likes: {
+      type: Number,
+      default: 0
+    }
   },
   { timestamps: true }
 );
