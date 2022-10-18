@@ -5,7 +5,7 @@
     padding: var(--spacing-lg);
     border-radius: 10%;
     margin: var(--spacing-rg);
-    box-shadow: 0px 3px 5px var(--color-primary-brg);
+    box-shadow: 0px 3px 5px var(--color-primary-drk);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,7 +14,7 @@
 }
 .Blog:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 10px var(--color-primary-brg), 0 6px 12px var(--color-alternate-brg), 0 8px 14px var(--color-primary-drk);
+    box-shadow: 0 4px 10px var(--color-alternate-brg), 0 6px 12px var(--color-alternate-drk), 0 8px 14px var(--color-primary-drk);
 }
 .Blog .img-wrapper {
     overflow: hidden;

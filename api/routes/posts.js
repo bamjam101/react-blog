@@ -68,29 +68,6 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-
-router.post("/like/:id", async (req,res) => {
-  try{
-    const {id} = req.params;
-    const username = req.body.username;
-
-    const post = await Post.findById(id);
-    
-    if(post.liked.includes(username)) {
-      await post.updateOne({$pull: {
-        liked: username
-      }});
-      res.status(200).json("Post has been liked!");
-    } else {
-      await post.updateOne({$push: {
-        liked:username
-      }});
-    }
-  } catch(err) {
-    res.status(500).json(err);
-  }
-});
-
 //GET all blog posts route handler
 router.get("/", async (req, res) => {
   const username = req.query.user;
@@ -111,6 +88,42 @@ router.get("/", async (req, res) => {
     res.status(200).json(posts);
   } catch (err) {
     res.status(500).json(err);
+  }
+});
+
+//route to handle likes
+router.put("/:id/like", async (req, res) => {
+  const { id } = req.params;
+  const username = req.body.username;
+  try {
+      const post = await Post.findById(id);
+      if (!post.liked.includes(username)) {
+          await post.updateOne({ $push: { liked: username } })
+          res.status(200).json("post has been liked")
+      } else {
+          await post.updateOne({ $pull: { liked: username } })
+          res.status(200).json("post has been disliked")
+      }
+  } catch (err) {
+      res.status(500).json(err)
+  }
+});
+
+//Route to handle comments
+router.put("/:id/comment", async (req, res) => {
+  const { id } = req.params;
+  const comment = {
+      text: req.body.text,
+      postedBy: req.body.user,
+  }
+  console.log(comment);
+  try {
+      await Post.findByIdAndUpdate(id, {
+          $push: { comments: comment }
+      }, { new: true })
+      res.status(200).json("The Comment has been Added")
+  } catch (err) {
+      res.status(500).json(err)
   }
 });
 

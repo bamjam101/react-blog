@@ -34,7 +34,7 @@ export default function Home() {
       <Header />
       <div className="blog-container">
         <BlogList blogs={posts} />
-        <Sidebar categories={categories} />
+        <Sidebar cats={posts} />
       </div>
     </div>
   )

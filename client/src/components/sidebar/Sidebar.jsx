@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import BlogList from "../bloglist/BlogList";
 import "./Sidebar.css";
 
-export default function Sidebar({ categories }) {
+export default function Sidebar({ cats }) {
+
     return (
         <div className="Sidebar">
             <section className="side-bar">
@@ -20,7 +21,7 @@ export default function Sidebar({ categories }) {
                     </header>
                     <div className="list-wrapper">
                         <ul>
-                            {categories? (categories.map(category => {
+                            {cats?.categories? (cats?.categories.map(category => {
                                 return (
                                     <Link className="link" to={`/cat?=${category.name}`}>
                                         <li>{category.name}</li>

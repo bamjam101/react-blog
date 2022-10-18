@@ -16,7 +16,7 @@ export default function Topbar() {
         <h2>Bloggie</h2>
       </header>
       <nav>
-        <ul>
+        <ul className="menu">
           <li>
             <Link className="link" to="/">Home</Link>
           </li>

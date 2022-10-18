@@ -27,6 +27,14 @@ const PostSchema = new mongoose.Schema(
       type: Array,
       default: []
     },
+    comments: [{
+      text: {
+          type: String
+      },
+      postedBy: {
+          type: String
+      }
+  }],
     likes: {
       type: Number,
       default: 0

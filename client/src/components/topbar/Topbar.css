@@ -23,7 +23,30 @@
 }
 
 .Topbar nav ul li  {
-    padding: 0 1rem;
+    margin: 0 1rem;
     list-style: none;
     color: black;
+}
+
+.menu li {
+    position: relative;
+}
+
+.menu li .link::after{
+    content: "";
+    position: absolute;
+    background-color: #66fcf1;
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -5px;
+    transition: 0.5s;
+}
+
+.menu li .link:hover::after{
+    width: 100%;
+}
+.menu li .link:hover{
+    color: white;
+    text-shadow: 0 0 20px;
 }
