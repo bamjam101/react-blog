@@ -6,84 +6,6 @@ import { useContext } from "react";
 import { Context } from "../../context/Context";
 
 export default function Single() {
-    // const location = useLocation()
-    // const path = location.pathname.split("/")[2]
-    // const [blog, setBlog] = useState({})
-    // const PF = "http://localhost:5000/images/";
-    // const { user } = useContext(Context);
-    // const [title, setTitle] = useState("");
-    // const [desc, setDesc] = useState("");
-    // const [updateMode, setUpdateMode] = useState(false);
-    // const [blogFetched, isFetching] = useState(false);
-    // const [like, setLike] = useState("");
-    // const [isLiked, setIsLiked] = useState(false);
-    // const [cats, setCats] = useState([]);
-    // const [comments, setComments] = useState([]);
-
-    // useEffect(() => {
-    //     const getBlog = async () => {
-    //         const res = await axios.get("/posts/" + path)
-    //         setBlog(res.data);
-    //         setTitle(res.data.title);
-    //         setDesc(res.data.desc);
-    //         setLike(res.data.liked.length);
-    //         setComments(res.data.comments);
-    //         isFetching(true);
-    //     }
-    //     getBlog()
-    // }, [path, blogFetched])
-
-    // useEffect(() => {
-    //     blogFetched && setIsLiked(blog?.liked.includes(user.username))
-    // }, [user.username, blog.liked, blogFetched, isFetching])
-
-    // const handleDelete = async () => {
-    //     try {
-    //         await axios.delete("/posts/" + path, {
-    //             data: { username: user.username }
-    //         });
-    //         window.location.replace("/");
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // };
-
-    // const styleLikeBtn = () => {
-    //     const likeBtn = document.querySelector(".like-btn");
-    //     likeBtn.style.backgroundColor = "red";
-    // }
-
-    // const handleUpdate = async () => {
-    //     try {
-    //         await axios.put("/posts/" + path, {
-    //             username: user.username, title, desc
-    //         });
-    //         setUpdateMode(false);
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // };
-
-    // const handleLike = async () => {
-    //     try {
-    //         styleLikeBtn();
-    //         axios.put("/posts/" + path + "/like", { username: user.username });
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    //     setLike(isLiked ? like - 1 : like + 1);
-    // }
-
-    // const handleComment = async (text, user) => {
-    //     try {
-    //         await axios.put("/posts/" + path + "/comment",
-    //             { text, user }
-    //         );
-    //     } catch (err) {
-
-    //     }
-    // }
-
     const location = useLocation()
     const path = location.pathname.split("/")[2]
     const [post, setPost] = useState({})
@@ -121,7 +43,7 @@ export default function Single() {
         setLike(isLiked ? like - 1 : like + 1)
         setIsLiked(!isLiked)
     }
-    const handleComment = async (text, user) => {
+    const handleComment = async (text, user, event) => {
         try {
             await axios.put("/posts/" + path + "/comment",
                 { text, user }
@@ -187,37 +109,11 @@ export default function Single() {
                 {updateMode ? <button id="btn" style={{ top: "42vh" }} onClick={handleUpdate}>Update Blog</button> : null}
             </div>
             <div className="comment-box">
-                {/* {
-                    user?.username && (
-                        <div>
-                            <form id="comment-form" onSubmit={(e) => {
-                                e.preventDefault();
-                                handleComment(e.target[0].value, user.username);
-                            }}>
-                                <header>
-                                    <h2>Comment Section</h2>
-                                </header>
-                                <div>
-                                    {post?.comment && <h3>{
-                                        comments.map(record => {
-                                            return (
-                                                <h6>{record.postedBy}: {record.text}</h6>
-                                            )
-                                        })
-                                    }</h3>}
-
-                                </div>
-                                <input type="text" placeholder='add a comment' />
-                            </form>
-                        </div>
-                    )
-                } */}
-                {
-                    user?.username && (
                         <div className="comment-box">
                             <form id="comment-form" onSubmit={(e) => {
                                 e.preventDefault();
-                                handleComment(e.target[0].value, user.username)
+                                handleComment(e.target[0].value, user.username);
+                                e.target[0].value = "";
                             }}>
                                 <header>
                                     <h2>Comment Section</h2>
@@ -232,11 +128,9 @@ export default function Single() {
                                     }</h3>}
 
                                 </div>
-                                <input type="text" placeholder='Add a comment' />
+                                {user?.username && <input type="text" placeholder='Add A comment' />}
                             </form>
                         </div>
-                    )
-                }
             </div>
         </div>
     );
