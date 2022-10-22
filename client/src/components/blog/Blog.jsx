@@ -1,10 +1,10 @@
 import React from "react";
 import "./Blog.css";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
-export default function Blog({blog}) {
+export default function Blog({ blog }) {
     const PF = "http://localhost:5000/images/";
-    return(
+    return (
         <div className="Blog">
             <Link className="link" to={`/post/${blog._id}`}>
                 <div className="img-wrapper">
@@ -21,7 +21,7 @@ export default function Blog({blog}) {
                     <div className="categories-wrapper">
                         <ul>
                             {blog.categories.map(category => {
-                                return(
+                                return (
                                     <li>{category}</li>
                                 )
                             })}

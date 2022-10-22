@@ -22,12 +22,12 @@ export default function Single() {
     useEffect(() => {
         const getPost = async () => {
             const res = await axios.get("/posts/" + path)
-            setPost(res.data)
-            setTitle(res.data.title)
-            setDesc(res.data.desc)
-            setLike(res.data.liked.length)
-            setComments(res.data.comments)
-            isFetching(true)
+            setPost(res.data);
+            setTitle(res.data.title);
+            setDesc(res.data.desc);
+            setLike(res.data.liked.length);
+            setComments(res.data.comments);
+            isFetching(true);
         }
         getPost()
     }, [path, comments])
@@ -85,6 +85,18 @@ export default function Single() {
                         <h3><i className="fa-regular fa-user"></i> {post.username}</h3>
 
                         <span>More Blogs From {post.username} <Link className="link" to={`/?user=${post.username}`}><i className="cursor fa-solid fa-arrow-up-right-from-square"></i></Link></span>
+
+                        {
+                            post?.Categories && <span className="post-category">Categories:
+                                {
+                                    post.Categories.map((category) => {
+                                        return (
+                                            <Link className="link" to={`/?user=${post.category}`}></Link>
+                                        );
+                                    })
+                                }
+                            </span>
+                        }
                     </div>
                     <div className="update-delete-container">
                         {post.username === user?.username ?
@@ -109,28 +121,28 @@ export default function Single() {
                 {updateMode ? <button id="btn" style={{ top: "42vh" }} onClick={handleUpdate}>Update Blog</button> : null}
             </div>
             <div className="comment-box">
-                        <div className="comment-box">
-                            <form id="comment-form" onSubmit={(e) => {
-                                e.preventDefault();
-                                handleComment(e.target[0].value, user.username);
-                                e.target[0].value = "";
-                            }}>
-                                <header>
-                                    <h2>Comment Section</h2>
-                                </header>
-                                <div>
-                                    {post?.comments && <h3>{
-                                        comments.map(record => {
-                                            return (
-                                                <h4>{record.postedBy}: {record.text}</h4>
-                                            )
-                                        })
-                                    }</h3>}
+                <div className="comment-box">
+                    <form id="comment-form" onSubmit={(e) => {
+                        e.preventDefault();
+                        handleComment(e.target[0].value, user.username);
+                        e.target[0].value = "";
+                    }}>
+                        <header>
+                            <h2>Comment Section</h2>
+                        </header>
+                        <div>
+                            {post?.comments && <h3>{
+                                comments.map(record => {
+                                    return (
+                                        <h4>{record.postedBy}: {record.text}</h4>
+                                    )
+                                })
+                            }</h3>}
 
-                                </div>
-                                {user?.username && <input type="text" placeholder='Add A comment' />}
-                            </form>
                         </div>
+                        {user?.username && <input type="text" placeholder='Add A comment' />}
+                    </form>
+                </div>
             </div>
         </div>
     );

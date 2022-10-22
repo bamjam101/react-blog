@@ -21,14 +21,14 @@ export default function Sidebar({ cats }) {
                     </header>
                     <div className="list-wrapper">
                         <ul>
-                            {cats?.categories? (cats?.categories.map(category => {
+                            {cats?.categories ? (cats?.categories.map(category => {
                                 return (
                                     <Link className="link" to={`/cat?=${category.name}`}>
                                         <li>{category.name}</li>
                                     </Link>
                                 )
                             }
-                            )): null}
+                            )) : null}
                         </ul>
                     </div>
                 </div>

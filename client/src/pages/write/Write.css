@@ -61,11 +61,13 @@
     border-bottom-right-radius: 1rem;
 }
 
-.title, .body {
-    border: none;    
+.title,
+.body {
+    border: none;
 }
 
-.title:focus, .body:focus {
+.title:focus,
+.body:focus {
     opacity: 1;
     border-bottom: 2px solid var(--color-primary-drk);
     outline: none;
@@ -100,13 +102,18 @@
     transition: backgroud 2s, box-shadow 1s;
 }
 
-#btn:hover{
+#btn:hover {
     box-shadow: 0 0 30px rgb(100, 255, 100), 0 0 60px rgb(100, 255, 100), 0 0 90px rgb(100, 255, 100);
     background: rgb(100, 255, 100);
     cursor: pointer;
 }
 
-::-webkit-scrollbar{
+.category-input {
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+/* ::-webkit-scrollbar{
     width: 0.75em;
     opacity: 0.3;
     cursor: pointer;
@@ -122,4 +129,4 @@
 
 ::-webkit-scrollbar-thumb:hover{
     background: #c5c6c7c4;   
-}
+} */

@@ -3,11 +3,11 @@ import { Context } from "../../context/Context";
 import "./Header.css";
 
 export default function Header() {
-  const {user} = useContext(Context);
-  const handleSearch =  async() => {
-    try{
+  const { user } = useContext(Context);
+  const handleSearch = async () => {
+    try {
 
-    } catch(err) {
+    } catch (err) {
       console.log(err);
     }
   }
