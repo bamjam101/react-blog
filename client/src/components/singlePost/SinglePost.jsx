@@ -30,7 +30,7 @@ export default function Single() {
             isFetching(true);
         }
         getPost()
-    }, [path, comments])
+    }, [path, comments]);
 
     useEffect(() => {
         postFetched && setIsLiked(post.liked.includes(user?.username))
@@ -87,15 +87,15 @@ export default function Single() {
                         <span>More Blogs From {post.username} <Link className="link" to={`/?user=${post.username}`}><i className="cursor fa-solid fa-arrow-up-right-from-square"></i></Link></span>
 
                         {
-                            post?.Categories && <span className="post-category">Categories:
+                            post.categories && <div className="post-category">Categories:
                                 {
-                                    post.Categories.map((category) => {
+                                    post.categories.map((category) => {
                                         return (
-                                            <Link className="link" to={`/?user=${post.category}`}></Link>
+                                            <Link className="spacing link" to={`/?cat=${category}`}>{category}</Link>
                                         );
                                     })
                                 }
-                            </span>
+                            </div>
                         }
                     </div>
                     <div className="update-delete-container">

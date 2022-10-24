@@ -1,25 +1,21 @@
 import { useContext } from "react";
 import { useState } from "react";
-import Sidebar from "../../components/sidebar/Sidebar";
 import { Context } from "../../context/Context";
 import axios from "axios";
 import "./Write.css";
 import { useEffect } from "react";
 
 export default function Write() {
+	const { user } = useContext(Context);
 	const [title, setTitle] = useState("");
 	const [desc, setDesc] = useState("");
-	const [categoryInp, setCategoryInp] = useState("");
-	const [newCategory, setNewCategory] = useState("");
-	const [newCategories, setNewCategories] = useState("");
+	const [newCategories, setNewCategories] = useState([]);
 	const [file, setFile] = useState(null);
-	const { user } = useContext(Context);
 	const [categories, setCategories] = useState([]);
 
 	const fetchCategories = async () => {
 		const res = await axios.get("/categories");
 		const data = res.data;
-		console.log(data)
 		setCategories(data);
 	}
 
@@ -27,18 +23,7 @@ export default function Write() {
 		fetchCategories();
 	}, []);
 
-	useEffect(() => {
-		const oldCategories = categories;
-		if (categoryInp) {
-			const updatedCategories = oldCategories.push(categoryInp);
-			setNewCategories(updatedCategories);
-		} else {
-			const updatedCategories = oldCategories.push(newCategory);
-			setNewCategories(updatedCategories);
-		}
-	}, [newCategory, categories, categoryInp])
-
-	const handleSubmit = async event => {
+	const handleSubmit = async (event) => {
 		event.preventDefault();
 		const newPost = {
 			username: user.username,
@@ -66,6 +51,17 @@ export default function Write() {
 		}
 	}
 
+	const handleCategory = async (event) => {
+		event.preventDefault();
+		const others = newCategories;
+		const inputValue = document.querySelector(".category-input").value;
+		console.log(inputValue)
+		if (!(newCategories.includes(inputValue))) {
+			const newCat = [inputValue, ...others]
+			setNewCategories(newCat);
+		}
+	}
+
 	const addCategoryInputVisible = () => {
 		const categoryInput = document.querySelector(".category-input");
 		categoryInput.style.opacity = "1";
@@ -74,6 +70,7 @@ export default function Write() {
 		const categoryInput = document.querySelector(".category-input");
 		categoryInput.style.opacity = "0";
 	}
+
 	return (
 		<>
 			<div className="Write">
@@ -96,28 +93,7 @@ export default function Write() {
 							}} />
 							<button type="submit" id="btn">Add Blog</button>
 						</header>
-						<div className="category-select">
-							<select id="category-selection" onChange={(event) => {
-								const selection = event.target.selectedOptions[0].value;
-								if (selection === 'custom') {
-									addCategoryInputVisible();
-								} else {
-									addCategoryInputInvisible();
-									setCategoryInp(selection);
-								}
-							}}>
-								<option value="custom">Add Custom Category</option>
-								{categories?.map((category) => {
-									return (
-										<option value={category.toLowerCase()}><span>{category}</span></option>
-									);
-								})}
-							</select>
-							<input className="category-input" type="text" onChange={(event) => {
-								const newCat = event.target.value;
-								setNewCategory(newCat);
-							}} />
-						</div>
+
 						<div className="doc-body">
 							<textarea
 								className="body"
@@ -126,11 +102,42 @@ export default function Write() {
 								onChange={(event) => {
 									setDesc(event.target.value);
 								}}
+								required
 							></textarea>
 						</div>
 					</div>
 				</form>
-				<Sidebar />
+				<form onSubmit={handleCategory} className="category-form">
+					<label>Any category? </label>
+					<select id="category-selection" onChange={(event) => {
+						const selection = event.target.selectedOptions[0].value;
+						if (selection === 'Custom') {
+							document.querySelector(".category-input").value = "";
+							addCategoryInputVisible();
+						} else {
+							addCategoryInputInvisible();
+							setTimeout(() => {
+								document.querySelector(".category-input").value = selection;
+							}, 500);
+						}
+					}}>
+						<option value="Custom">Add Custom Category</option>
+						{categories.map((category) => {
+							return (
+								<option value={category.name}>{category.name}</option>
+							);
+						})}
+					</select>
+					<input className="category-input" type="text" name="category" id="category" placeholder="Type here..." />
+					<button className="category-btn" type="submit">Add Category</button>
+					<div className="category-wrapper">
+						<ul>{newCategories.map((blogCat) => {
+							return (
+								<li>{blogCat}</li>
+							);
+						})}</ul>
+					</div>
+				</form>
 			</div>
 		</>
 	);

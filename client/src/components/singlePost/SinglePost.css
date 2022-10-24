@@ -102,6 +102,11 @@ span .cursor {
     top: 6vh;
 }
 
+.spacing {
+    margin: 0 var(--spacing-rg);
+    font-weight: bold;
+}
+
 #comment-form {
     position: relative;
     width: 100%;
