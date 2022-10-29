@@ -31,14 +31,14 @@ export default function Topbar() {
               <Link className="link" to="/register">Logout</Link>
             </li>
           ) : (
-            <>
-              <li>
-                <Link className="link" to="/register">Register</Link>
-              </li>
-              <li>
-                <Link className="link" to="/login">Login</Link>
-              </li>
-            </>
+              <div className="navbar-right">
+                <li>
+                  <Link className="link" to="/register">Register</Link>
+                </li>
+                <li>
+                  <Link className="link" to="/login">Login</Link>
+                </li>
+              </div>
           )}
         </ul>
       </nav>

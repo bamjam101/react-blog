@@ -69,9 +69,32 @@ router.get("/:id", async (req, res) => {
 });
 
 //GET all blog posts route handler
+// router.get("/", async (req, res) => {
+//   const username = req.query.user;
+//   const catname = req.query.cat;
+//   try {
+//     let posts;
+//     if (username) {
+//       posts = await Post.find({ username });
+//     } else if (catname) {
+//       posts = await Post.find({
+//         categories: {
+//           $in: [catname],
+//         },
+//       });
+//     } else {
+//       posts = await Post.find();
+//     }
+//     res.status(200).json(posts);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
 router.get("/", async (req, res) => {
   const username = req.query.user;
   const catname = req.query.cat;
+  const search = req.query.search;
   try {
     let posts;
     if (username) {
@@ -82,6 +105,16 @@ router.get("/", async (req, res) => {
           $in: [catname],
         },
       });
+    } else if (!(search === '' || search === null)) {
+      posts = await Post.find(
+        {
+          $or: [
+            { title: new RegExp(search, "g") },
+            { username: new RegExp(search, "g") },
+            { categories: new RegExp(search, "g") },
+          ]
+        }
+      );
     } else {
       posts = await Post.find();
     }

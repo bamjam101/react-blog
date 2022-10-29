@@ -75,21 +75,10 @@ export default function Account() {
                     </div>
                 </div>
                 <div className="account-settings">
-                    {userUpdateMode ? <button id="btn" type="submit" style={{ position: "relative", display: "block", margin: "auto" }}>Update</button> : <i className="btn edit-btn fa-regular fa-pen-to-square" onClick={() => { setUserUpdateMode(true) }}></i>}
+                    {userUpdateMode ? <button id="btn" type="submit" style={{ position: "relative", display: "block", margin: "auto", cursor: "pointer" }}>Update</button> : <i style={{ position: "relative", display: "block", margin: "auto", cursor: "pointer" }} className="btn edit-btn fa-regular fa-pen-to-square" onClick={() => { setUserUpdateMode(true) }}>   Edit Profile</i>}
                 </div>
                 {success && <span style={{ color: "lightgreen" }}>Profile has been updated.</span>}
             </form>
-
-            <div className="editor">
-                <p>Create Your Own Blog!</p>
-                <button className="editorBtn" onClick={() => { window.location.replace("/write") }}>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    Write Blog
-                </button>
-            </div>
         </div>
     )
 }
