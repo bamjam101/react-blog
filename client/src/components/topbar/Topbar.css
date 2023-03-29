@@ -50,3 +50,7 @@
     color: white;
     text-shadow: 0 0 20px;
 }
+
+.navbar-right {
+    display: flex;
+}

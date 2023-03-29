@@ -13,23 +13,6 @@ import { Context } from "./context/Context";
 const App = () => {
   const {user} = useContext(Context);
   return (
-    // <Router>
-    //   <div className="App">
-    //     <Topbar />
-    //     <main className="main-container">
-    //       <Routes>
-    //         <Route exact path="/" element={<Home/>} />
-    //         <Route path="/api/post" element={<Single/>} />
-    //         {user? <Route path="/register" element={<Home/>} /> : <Route path="/register" element={<Register/>} />}
-    //         {user? <Route path="/login" element={<Home/>} /> : <Route path="/login" element={<Login/>} />}
-    //         {user? <Route path="/write" element={<Write/>} /> : <Route path="/write" element={<Register/>} />}
-    //         {user? <Route path="/account" element={<Account/>} /> : <Route path="/account" element={<Register/>} />}
-    //       </Routes>
-    //     </main>
-    //     <Footer />
-    //   </div>
-    // </Router>
-
     <Router>
       <Topbar />
       <div className="main-container">
@@ -42,7 +25,6 @@ const App = () => {
           <Route path="/post/:postId" element={<Single />} />
         </Routes>
       </div>
-      <Footer />
     </Router>
   );
 };
