@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const User = require("../models/User");
 const Post = require("../models/Post");
-const bcrypt = require("bcrypt");
+const Comment = require("../models/Comment");
 
 //POST new blog post route handler
 router.post("/", async (req, res) => {
@@ -62,34 +62,17 @@ router.delete("/:id", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
-    res.status(200).json(post);
+    console.log(post);
+    const commentList = await Comment.findOne({ postId: req.params.id });
+    if (!commentList) {
+      res.status(200).json(post);
+    } else {
+      res.status(200).json({ ...post, ...commentList });
+    }
   } catch (err) {
     res.status(500).json(err);
   }
 });
-
-//GET all blog posts route handler
-// router.get("/", async (req, res) => {
-//   const username = req.query.user;
-//   const catname = req.query.cat;
-//   try {
-//     let posts;
-//     if (username) {
-//       posts = await Post.find({ username });
-//     } else if (catname) {
-//       posts = await Post.find({
-//         categories: {
-//           $in: [catname],
-//         },
-//       });
-//     } else {
-//       posts = await Post.find();
-//     }
-//     res.status(200).json(posts);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
 
 router.get("/", async (req, res) => {
   const username = req.query.user;
@@ -105,16 +88,14 @@ router.get("/", async (req, res) => {
           $in: [catname],
         },
       });
-    } else if (!(search === '' || search === null)) {
-      posts = await Post.find(
-        {
-          $or: [
-            { title: new RegExp(search, "g") },
-            { username: new RegExp(search, "g") },
-            { categories: new RegExp(search, "g") },
-          ]
-        }
-      );
+    } else if (!(search === "" || search === null)) {
+      posts = await Post.find({
+        $or: [
+          { title: new RegExp(search, "g") },
+          { username: new RegExp(search, "g") },
+          { categories: new RegExp(search, "g") },
+        ],
+      });
     } else {
       posts = await Post.find();
     }
@@ -129,34 +110,53 @@ router.put("/:id/like", async (req, res) => {
   const { id } = req.params;
   const username = req.body.username;
   try {
-      const post = await Post.findById(id);
-      if (!post.liked.includes(username)) {
-          await post.updateOne({ $push: { liked: username } })
-          res.status(200).json("post has been liked")
-      } else {
-          await post.updateOne({ $pull: { liked: username } })
-          res.status(200).json("post has been disliked")
-      }
+    const post = await Post.findById(id);
+    if (!post.liked.includes(username)) {
+      await post.updateOne({ $push: { liked: username } });
+      res.status(200).json("post has been liked");
+    } else {
+      await post.updateOne({ $pull: { liked: username } });
+      res.status(200).json("post has been disliked");
+    }
   } catch (err) {
-      res.status(500).json(err)
+    res.status(500).json(err);
   }
 });
 
 //Route to handle comments
-router.put("/:id/comment", async (req, res) => {
+router.post("/:id/comment", async (req, res) => {
   const { id } = req.params;
-  const comment = {
-      text: req.body.text,
-      postedBy: req.body.user,
-  }
-  console.log(comment);
   try {
-      await Post.findByIdAndUpdate(id, {
-          $push: { comments: comment }
-      }, { new: true })
-      res.status(200).json("The Comment has been Added")
+    const comment = new Comment({
+      postId: id,
+      text: req.body.text,
+      commentBy: req.body.user,
+    }).save();
+
+    res.status(200).json("The Comment has been Added");
   } catch (err) {
-      res.status(500).json(err)
+    res.status(500).json(err);
+  }
+});
+
+router.put("/:postId/comment/:commentId", async (req, res) => {
+  const { postId, commentId } = req.params;
+  try {
+    const comment = await Comment.findOneAndUpdate(
+      { postId },
+      {
+        $push: {
+          nestedComment: {
+            text: req.body.text,
+            commentBy: req.body.user,
+          },
+        },
+      }
+    );
+
+    res.status(200).json("The Comment has been Added");
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 

@@ -14,14 +14,14 @@
   }
 
   25% {
-    background-color: rgba(74, 74, 62, 0);
+    background-color: rgba(122, 122, 117, 0);
   }
 
   50% {
-    background-color: #3e3e55;
+    background-color: #5c5c71;
   }
 
   100% {
-    background-color: #456c63;
+    background-color: #61dec1;
   }
 }

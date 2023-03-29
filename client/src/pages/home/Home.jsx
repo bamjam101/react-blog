@@ -15,30 +15,30 @@ export default function Home() {
 
   useEffect(() => {
     const fetch = async () => {
-    const res = await axios.get(`/posts/?search=${query}`)
-    setPosts(res.data);
+      const res = await axios.get(`/posts/?search=${query}`);
+      setPosts(res.data);
     };
     fetch();
   }, [query]);
 
   const handleSearch = async (event) => {
     event.preventDefault();
-    const res = await axios.get(`/posts/?search=${query}`)
-    setPosts(res.data)
-  }
+    const res = await axios.get(`/posts/?search=${query}`);
+    setPosts(res.data);
+  };
 
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await axios.get("/posts/" + search);
       const data = res.data;
       setPosts(data);
-    }
+    };
 
     const fetchCategories = async () => {
       const res = await axios.get("/categories");
       const data = res.data;
       setCategories(data);
-    }
+    };
 
     fetchPosts();
     fetchCategories();
@@ -57,15 +57,25 @@ export default function Home() {
             }} />
             <button type="submit"></button>
           </form> */}
-          <form autoComplete="off" onSubmit={handleSearch} onChange={(e) => {
-              setQuery(e.target.value)
-            }}>
-            <input type="text" name="search" id="searchbar" placeholder="Enter Search term here...." />
-            <button id="search-btn" type="submit">Search
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+          <form
+            autoComplete="off"
+            onSubmit={handleSearch}
+            onChange={(e) => {
+              setQuery(e.target.value);
+            }}
+          >
+            <input
+              type="text"
+              name="search"
+              id="searchbar"
+              placeholder="Enter Search term here...."
+            />
+            <button id="search-btn" type="submit">
+              Search
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
             </button>
           </form>
         </div>
@@ -76,6 +86,5 @@ export default function Home() {
         <Sidebar cats={categories} />
       </div>
     </div>
-  )
-
+  );
 }

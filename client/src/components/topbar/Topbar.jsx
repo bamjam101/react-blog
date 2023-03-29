@@ -18,27 +18,47 @@ export default function Topbar() {
       <nav>
         <ul className="menu">
           <li>
-            <Link className="link" to="/">Home</Link>
+            <Link className="link" to="/">
+              Home
+            </Link>
           </li>
-          <li>{user ? <Link className="link" to="/write">New Blog</Link> : null}</li>
-          <li>{user ? <Link className="link" to="/account">Account</Link> : null}</li>
+          {user ? (
+            <li>
+              <Link className="link" to="/write">
+                New Blog
+              </Link>{" "}
+            </li>
+          ) : null}
+          {user ? (
+            <li>
+              <Link className="link" to="/account">
+                Account
+              </Link>{" "}
+            </li>
+          ) : null}
         </ul>
       </nav>
       <nav>
         <ul>
           {user ? (
             <li onClick={handleLogout}>
-              <Link className="link" to="/register">Logout</Link>
+              <Link className="link" to="/register">
+                Logout
+              </Link>
             </li>
           ) : (
-              <div className="navbar-right">
-                <li>
-                  <Link className="link" to="/register">Register</Link>
-                </li>
-                <li>
-                  <Link className="link" to="/login">Login</Link>
-                </li>
-              </div>
+            <div className="navbar-right">
+              <li>
+                <Link className="link" to="/register">
+                  Register
+                </Link>
+              </li>
+              <li>
+                <Link className="link" to="/login">
+                  Login
+                </Link>
+              </li>
+            </div>
           )}
         </ul>
       </nav>
