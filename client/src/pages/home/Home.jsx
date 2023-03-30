@@ -46,17 +46,11 @@ export default function Home() {
 
   return (
     <div className="Home">
-      <div className="Header">
+      <div className="Header blog-grid">
         <header>
           <h1>Find It By Typing.</h1>
         </header>
         <div className="search-div">
-          {/* <form onSubmit={handleSearch}>
-            <input type="text" name="search" id="searchbar" placeholder="Enter Search term here...." onChange={(e) => {
-              setQuery(e.target.value)
-            }} />
-            <button type="submit"></button>
-          </form> */}
           <form
             autoComplete="off"
             onSubmit={handleSearch}
@@ -83,6 +77,8 @@ export default function Home() {
 
       <div className="blog-container">
         <BlogList blogs={posts} />
+      </div>
+      <div className="sidebar-grid">
         <Sidebar cats={categories} />
       </div>
     </div>

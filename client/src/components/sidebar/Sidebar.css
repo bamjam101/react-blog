@@ -1,12 +1,5 @@
 .Sidebar {
-    position: fixed;
-    right: 0;
-    top: 6vh;
-}
-
-.side-bar {
-    width: 22vw;
-    height: 83vh;
+    height: 100%;
     padding: var(--spacing-xl);
     transition: box-shadow 0.5s;
 }
@@ -15,12 +8,12 @@
     box-shadow: -2px 4px 10px whitesmoke;
 }
 
-.side-bar > header {
+.side-bar>header {
     padding: 1em;
     transition: text-shadow 0.5s;
 }
 
-.side-bar > header:hover {
+.side-bar>header:hover {
     text-shadow: 3px 3px 4px whitesmoke;
 }
 
@@ -30,7 +23,7 @@
     height: 20%;
 }
 
-.img-list > header h3 {
+.img-list>header h3 {
     text-align: center;
     display: block;
 }
@@ -55,7 +48,7 @@
     margin: var(--spacing-rg);
 }
 
-.list-wrapper ul .link li::after{
+.list-wrapper ul .link li::after {
     content: "";
     position: absolute;
     background-color: #66fcf1;
@@ -66,10 +59,11 @@
     transition: 0.5s;
 }
 
-.list-wrapper ul .link li:hover::after{
+.list-wrapper ul .link li:hover::after {
     width: 100%;
 }
-.list-wrapper ul .link li:hover{
+
+.list-wrapper ul .link li:hover {
     color: white;
     text-shadow: 0 0 20px;
 }

@@ -12,7 +12,6 @@ export default function Topbar() {
   return (
     <div className="Topbar">
       <header>
-        <div className="logo"></div>
         <h2>Bloggie</h2>
       </header>
       <nav>

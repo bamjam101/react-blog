@@ -1,18 +1,16 @@
 .bloglist {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
-@media (width < 1297px) {
+
+@media (width < 820px) {
     .bloglist {
         grid-template-columns: 1fr 1fr;
     }
 }
 
-@media (width < 687px) {
+@media (width < 470px) {
     .bloglist {
         grid-template-columns: 1fr;
     }

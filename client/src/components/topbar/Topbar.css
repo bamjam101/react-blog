@@ -1,28 +1,21 @@
-
 .Topbar {
-    background-color: rgab(0,0,0,0.5);
+    background-color: rgab(0, 0, 0, 0.5);
     height: 6vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0 1rem;
 }
 
 .Topbar header {
     display: flex;
 }
 
-.logo {
-    background: url("../../../public/imgs/logo.png");
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-}
-
-.Topbar nav ul{
+.Topbar nav ul {
     display: flex;
 }
 
-.Topbar nav ul li  {
+.Topbar nav ul li {
     margin: 0 1rem;
     list-style: none;
     color: black;
@@ -32,7 +25,7 @@
     position: relative;
 }
 
-.menu li .link::after{
+.menu li .link::after {
     content: "";
     position: absolute;
     background-color: #66fcf1;
@@ -43,10 +36,11 @@
     transition: 0.5s;
 }
 
-.menu li .link:hover::after{
+.menu li .link:hover::after {
     width: 100%;
 }
-.menu li .link:hover{
+
+.menu li .link:hover {
     color: white;
     text-shadow: 0 0 20px;
 }

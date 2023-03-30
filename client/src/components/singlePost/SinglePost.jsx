@@ -18,6 +18,7 @@ export default function Single() {
   const [like, setLike] = useState("");
   const [isLiked, setIsLiked] = useState(false);
   const [comments, setComments] = useState([]);
+  const [commentId, setCommentId] = useState("");
 
   useEffect(() => {
     const getPost = async () => {
@@ -36,6 +37,16 @@ export default function Single() {
     postFetched && setIsLiked(post.liked.includes(user?.username));
   }, [user?.username, post.liked, postFetched]);
 
+  const copyToClipboard = () => {
+    var inputc = document.body.appendChild(document.createElement("input"));
+    inputc.value = window.location.href;
+    inputc.focus();
+    inputc.select();
+    document.execCommand("copy");
+    inputc.parentNode.removeChild(inputc);
+    alert("URL Copied.");
+  };
+
   const handleLike = () => {
     try {
       axios.put("/posts/" + path + "/like", { username: user?.username });
@@ -45,8 +56,21 @@ export default function Single() {
   };
   const handleComment = async (text, user, event) => {
     try {
-      await axios.put("/posts/" + path + "/comment", { text, user });
-    } catch (err) {}
+      await axios.post("/posts/" + path + "/comment", { text, user });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleReply = async (text, user, commentId, event) => {
+    try {
+      await axios.put("/posts/" + path + "/comment/" + commentId, {
+        text,
+        user,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const handleDelete = async () => {
@@ -134,25 +158,45 @@ export default function Single() {
                 <span> {like} likes</span>
               </div>
             )}
+            <>
+              <i
+                style={{
+                  backgroundColor: "transparent",
+                  transition: "background-color 1s",
+                }}
+                onClick={copyToClipboard}
+                className="btn like-btn fa-solid fa-link"
+              ></i>
+              {post.username !== user?.username && <span> Share</span>}
+            </>
           </div>
         </div>
         <div className="title-preview">
-          {updateMode ? (
-            <input
-              type="text"
-              className="title"
-              value={title}
-              style={{ padding: "1rem" }}
-              onChange={(e) => {
-                setTitle(e.target.value);
-              }}
-              autoFocus
-            />
-          ) : (
-            <h2>{title}</h2>
-          )}
+          <div className="grid-align">
+            {updateMode ? (
+              <input
+                type="text"
+                className="title"
+                value={title}
+                style={{ padding: "1rem" }}
+                onChange={(e) => {
+                  setTitle(e.target.value);
+                }}
+                autoFocus
+              />
+            ) : (
+              <h2>{title}</h2>
+            )}
+          </div>
+          <div className="grid-align">
+            {updateMode ? (
+              <button id="btn" onClick={handleUpdate}>
+                Update Blog
+              </button>
+            ) : null}
+          </div>
         </div>
-        <div className="body-preview">
+        <div className={`body-preview`}>
           {updateMode ? (
             <textarea
               type="text"
@@ -172,18 +216,18 @@ export default function Single() {
             <p>{desc}</p>
           )}
         </div>
-        {updateMode ? (
-          <button id="btn" style={{ top: "42vh" }} onClick={handleUpdate}>
-            Update Blog
-          </button>
-        ) : null}
       </div>
-      <div className="comment-box">
+      {!updateMode && (
         <div className="comment-box">
           <form
             id="comment-form"
             onSubmit={(e) => {
-              handleComment(e.target[0].value, user.username);
+              e.preventDefault();
+              if (commentId) {
+                handleReply(e.target[0].value, user.username, commentId);
+              } else {
+                handleComment(e.target[0].value, user.username);
+              }
               window.location.reload(true);
               e.target[0].value = "";
             }}
@@ -196,20 +240,58 @@ export default function Single() {
                 <div>
                   {comments.map((record, index) => {
                     return (
-                      <h4 key={index}>
-                        {record.postedBy}: {record.text}
-                      </h4>
+                      <div className="comment-div" key={index}>
+                        <h4>
+                          {record.commentBy}: {record.text}
+                          {user?.username && (
+                            <span
+                              className="reply"
+                              onClick={() => {
+                                setCommentId(post.comments[index]._id);
+                                console.log(commentId);
+                                document
+                                  .getElementById("comment-input")
+                                  .focus();
+                              }}
+                            >
+                              <i
+                                style={{
+                                  backgroundColor: "transparent",
+                                  transition: "background-color 1s",
+                                }}
+                                className="btn fa-solid fa-comment-dots"
+                              ></i>
+                            </span>
+                          )}
+                        </h4>
+                        <ul>
+                          {record?.nestedComment?.map(
+                            (nestedComment, index) => {
+                              return (
+                                <li key={index}>
+                                  {nestedComment.commentBy}:{" "}
+                                  {nestedComment.text}
+                                </li>
+                              );
+                            }
+                          )}
+                        </ul>
+                      </div>
                     );
                   })}
                 </div>
               )}
             </div>
             {user?.username && (
-              <input type="text" placeholder="Add A comment" />
+              <input
+                type="text"
+                id="comment-input"
+                placeholder="Leave a comment"
+              />
             )}
           </form>
         </div>
-      </div>
+      )}
     </div>
   );
 }

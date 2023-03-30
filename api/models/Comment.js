@@ -9,8 +9,7 @@ const CommentSchema = mongoose.Schema({
     type: String,
   },
   commentBy: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+    type: String,
   },
   likes: {
     type: Number,
@@ -25,7 +24,7 @@ const CommentSchema = mongoose.Schema({
         type: Number,
         default: 0,
       },
-      commentBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+      commentBy: { type: String },
     },
   ],
 });

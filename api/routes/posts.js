@@ -62,13 +62,9 @@ router.delete("/:id", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
-    console.log(post);
-    const commentList = await Comment.findOne({ postId: req.params.id });
-    if (!commentList) {
-      res.status(200).json(post);
-    } else {
-      res.status(200).json({ ...post, ...commentList });
-    }
+    const comments = await Comment.find({ postId: req.params.id });
+    const response = { ...post._doc, comments };
+    res.status(200).json(response);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -132,7 +128,6 @@ router.post("/:id/comment", async (req, res) => {
       text: req.body.text,
       commentBy: req.body.user,
     }).save();
-
     res.status(200).json("The Comment has been Added");
   } catch (err) {
     res.status(500).json(err);
@@ -140,10 +135,10 @@ router.post("/:id/comment", async (req, res) => {
 });
 
 router.put("/:postId/comment/:commentId", async (req, res) => {
-  const { postId, commentId } = req.params;
+  const { commentId } = req.params;
   try {
     const comment = await Comment.findOneAndUpdate(
-      { postId },
+      { _id: commentId },
       {
         $push: {
           nestedComment: {

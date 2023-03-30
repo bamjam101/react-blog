@@ -5,10 +5,12 @@
 }
 
 @keyframes slide {
-    0%{
+    0% {
         margin-top: 20vh;
         opacity: 0;
-    }100%{
+    }
+
+    100% {
         margin-top: 0;
         opacity: 1;
     }
@@ -35,7 +37,7 @@
     transition-duration: 1s;
 }
 
-.profile img{ 
+.profile img {
     margin: 1vh;
     height: 14vh;
     width: 14vh;
@@ -43,18 +45,19 @@
     transform: none;
     z-index: auto;
     object-fit: cover;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     transition: 1s;
 }
 
 .profile img:hover {
     background-color: #66fcf1;
-    box-shadow:0 0 4px #66fcf1, 0 0 6px #66fcf1, 0 0 8px #66fcf1;
+    box-shadow: 0 0 4px #66fcf1, 0 0 6px #66fcf1, 0 0 8px #66fcf1;
 }
 
 .Account label {
     display: block;
 }
+
 .username {
     display: grid;
     width: 50%;
@@ -111,81 +114,28 @@
     transform: translateX(50%) translateY(-100%);
 }
 
-@media(max-width:1024px)
-{
-    html{
+@media(max-width:1024px) {
+    html {
         font-size: 90%;
     }
-    .username p {
-        display: absolute;
-        margin-left: 41vw;
-        font-size: 2rem;
-    }
 
-}    
+}
 
-@media(max-width:768px)
-{
-    html{
+@media(max-width:768px) {
+    html {
         font-size: 80%;
-    }
-
-    .username p {
-        display: absolute;
-        margin-left: 41vw;
-        font-size: 2rem;
-    }
-    .email p{
-        margin-left: 37.5vw;
     }
 }
 
-@media(max-width:650px)
-{
-    html{
+@media screen and (max-width:650px) {
+    html {
         font-size: 70%;
     }
 }
 
 
-@media(max-width:560px)
-{
-    html{
+@media screen and (max-width:560px) {
+    html {
         font-size: 60%;
-    }
-    .nav-logo {
-        transform: translateX(3vh) translateY(9vh);
-        font-weight: bold;
-        max-width: 90vw;
-    }
-
-    .nav-logo p {
-        font-size: 2.6rem;
-    }
-
-    .nav-bar {
-        display: block;
-        height: 22.5vh;
-        text-align: right; 
-    }
-
-    nav ul li{
-        line-height: 4vh;
-        transform: translateY(-3.5vh);
-    }
-
-    nav ul{
-        display: block;
-        list-style: none;
-        text-decoration: none;
-    }
-
-    .username p {
-        display: absolute;
-        margin-left: 30.5vw;
-        font-size: 2rem;
-    }
-    .email p{
-        margin-left: 25vw;
     }
 }

@@ -1,10 +1,21 @@
 .Single {
-    height: 88.5vh;
+    padding: 0 var(--spacing-xl);
+    display: grid;
+    min-height: 94svh;
+    overflow: hidden;
+    grid-template-columns: 1fr 0.3fr;
+    background-image: var(--theme);
+    background-size: 300%;
+    background-repeat: no-repeat;
+    background-position: left;
+    animation: flow 20s infinite alternate;
+    grid-template-areas:
+        "preview comment";
 }
 
 .blog-preview {
-    height: 100%;
-    width: 75%;
+    overflow-y: scroll;
+    height: 84vh;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -12,14 +23,13 @@
 
 .redirect-container {
     display: flex;
-    padding: var(--spacing-xl);
     justify-content: space-between;
     align-items: center;
 }
 
 .blog-photo {
-    width: 75vw;
-    height: 75vh;
+    width: 20rem;
+    height: 20rem;
     display: flex;
     justify-content: center;
     overflow: hidden;
@@ -30,7 +40,7 @@
     height: 100%;
 }
 
-.blog-photo img{
+.blog-photo img {
     width: 75vw;
     height: 50vh;
     transition: height 0.5s, width 0.5s;
@@ -48,6 +58,7 @@
 
 .btn {
     margin: 0 var(--spacing-sm);
+    cursor: pointer;
     transition: text-shadow 0.5s, color 0.5s;
 }
 
@@ -76,31 +87,42 @@ span .cursor {
 }
 
 .title-preview {
-    margin-left: 1rem;
-    width: 80%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 0.2fr;
     opacity: 0.5;
     font-size: var(--fontsize-xl);
     transition: opacity 1s;
 }
 
 .body-preview {
-    margin: var(--spacing-xl) 0 0 var(--spacing-sm);
-    padding: var(--spacing-sm);
+    grid-area: preview;
     height: calc(75vh - calc(2*var(--spacing-sm)));
-    width: 97%;
     opacity: 0.5;
+    width: 100%;
     font-size: var(--fontsize-lg);
     transition: opacity 1s, border-bottom 0.5s;
     resize: none;
+}
+
+.static-body-preview {
     overflow-y: scroll;
 }
 
 .comment-box {
-    position: fixed;
-    width: 25%;
-    right: 0;
-    top: 6vh;
+    grid-area: comment;
 }
+
+.comment-div {
+    padding: 0.5rem;
+}
+
+.comment-div>ul {
+    margin-left: 1rem;
+    list-style: none;
+}
+
+
 
 .spacing {
     margin: 0 var(--spacing-rg);
@@ -110,36 +132,48 @@ span .cursor {
 #comment-form {
     position: relative;
     width: 100%;
-    height: 83vh;
+    min-height: 84vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: var(--spacing-xl);
-    transition: box-shadow 0.5s;
 }
 
 #comment-form input {
     position: absolute;
-    bottom: 4vh;
+    bottom: 0;
     width: 60%;
     padding: var(--spacing-sm) var(--spacing-xl);
-    height: 3vh;
     opacity: 0.5;
-    font-size: var(--fontsize-lg);
+    font-size: var(--fontsize-rg);
     transition: opacity 1s;
     border-bottom-right-radius: 1rem;
     border-top-left-radius: 1rem;
 }
 
-#comment-form:hover {
-    box-shadow: -2px 4px 10px whitesmoke;
-}
-
-#comment-form > header {
+#comment-form>header {
     padding: 1em;
     transition: text-shadow 0.5s;
 }
 
-#comment-form > header:hover {
+#comment-form>header:hover {
     text-shadow: 3px 3px 4px whitesmoke;
+}
+
+@media screen and (max-width: 900px) {
+    .Single {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 0.2fr;
+        grid-template-areas:
+            "preview"
+            "comment";
+    }
+
+    #comment-form {
+        min-height: auto;
+    }
+
+    #comment-form input {
+        position: static;
+        width: 40%;
+    }
 }
