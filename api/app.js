@@ -10,6 +10,8 @@ const userRoute = require("./routes/users");
 const postRoute = require("./routes/posts");
 const categoryRoute = require("./routes/categories");
 
+const PORT = process.env.PORT || 5000;
+
 // allows access into .env file in same directory (must have a .env file containing MongoDB database's url for application connection)
 dotenv.config();
 // allows to send json to server as request and also to retreive response in json form, simply for allowing translation of json in body
@@ -52,6 +54,6 @@ app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/categories", categoryRoute);
 
-app.listen("5000", () => {
+app.listen(PORT, () => {
   console.log("Listening on port 5000");
 });
