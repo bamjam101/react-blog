@@ -15,7 +15,9 @@ export default function Home() {
 
   useEffect(() => {
     const fetch = async () => {
-      const res = await axios.get(`/posts/?search=${query}`);
+      const res = await axios.get(
+        `${process.env.REACT_APP_BASE_URL}/posts/?search=${query}`
+      );
       setPosts(res.data);
     };
     fetch();
@@ -23,19 +25,25 @@ export default function Home() {
 
   const handleSearch = async (event) => {
     event.preventDefault();
-    const res = await axios.get(`/posts/?search=${query}`);
+    const res = await axios.get(
+      `${process.env.REACT_APP_BASE_URL}/posts/?search=${query}`
+    );
     setPosts(res.data);
   };
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get("/posts/" + search);
+      const res = await axios.get(
+        `${process.env.REACT_APP_BASE_URL}/posts/` + search
+      );
       const data = res.data;
       setPosts(data);
     };
 
     const fetchCategories = async () => {
-      const res = await axios.get("/categories");
+      const res = await axios.get(
+        `${process.env.REACT_APP_BASE_URL}/categories`
+      );
       const data = res.data;
       setCategories(data);
     };

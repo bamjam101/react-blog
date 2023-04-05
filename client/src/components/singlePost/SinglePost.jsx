@@ -9,7 +9,7 @@ export default function Single() {
   const location = useLocation();
   const path = location.pathname.split("/")[2];
   const [post, setPost] = useState({});
-  const PF = "http://localhost:5000/images/";
+  const PF = "https://bloggie.onrender.com/images/";
   const { user } = useContext(Context);
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
@@ -22,7 +22,9 @@ export default function Single() {
 
   useEffect(() => {
     const getPost = async () => {
-      const res = await axios.get("/posts/" + path);
+      const res = await axios.get(
+        `${process.env.REACT_APP_BASE_URL}/posts/` + path
+      );
       setPost(res.data);
       setTitle(res.data.title);
       setDesc(res.data.desc);
@@ -49,14 +51,19 @@ export default function Single() {
 
   const handleLike = () => {
     try {
-      axios.put("/posts/" + path + "/like", { username: user?.username });
+      axios.put(`${process.env.REACT_APP_BASE_URL}/posts/` + path + "/like", {
+        username: user?.username,
+      });
     } catch (err) {}
     setLike(isLiked ? like - 1 : like + 1);
     setIsLiked(!isLiked);
   };
   const handleComment = async (text, user, event) => {
     try {
-      await axios.post("/posts/" + path + "/comment", { text, user });
+      await axios.post(
+        `${process.env.REACT_APP_BASE_URL}/posts/` + path + "/comment",
+        { text, user }
+      );
     } catch (err) {
       console.log(err);
     }
@@ -64,10 +71,16 @@ export default function Single() {
 
   const handleReply = async (text, user, commentId, event) => {
     try {
-      await axios.put("/posts/" + path + "/comment/" + commentId, {
-        text,
-        user,
-      });
+      await axios.put(
+        `${process.env.REACT_APP_BASE_URL}/posts/` +
+          path +
+          "/comment/" +
+          commentId,
+        {
+          text,
+          user,
+        }
+      );
     } catch (err) {
       console.log(err);
     }
@@ -75,7 +88,7 @@ export default function Single() {
 
   const handleDelete = async () => {
     try {
-      await axios.delete("/posts/" + path, {
+      await axios.delete(`${process.env.REACT_APP_BASE_URL}/posts/` + path, {
         data: { username: user?.username },
       });
       window.location.replace("/");
@@ -84,7 +97,7 @@ export default function Single() {
 
   const handleUpdate = async () => {
     try {
-      await axios.put("/posts/" + path, {
+      await axios.put(`${process.env.REACT_APP_BASE_URL}/posts/` + path, {
         username: user?.username,
         title,
         desc,

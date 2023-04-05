@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const multer = require("multer");
 const path = require("path");
+const cors = require("cors");
 
 const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
@@ -16,6 +17,12 @@ const PORT = process.env.PORT || 5000;
 dotenv.config();
 // allows to send json to server as request and also to retreive response in json form, simply for allowing translation of json in body
 app.use(express.json());
+//react api header configuration
+app.use(
+  cors({
+    origin: ["https://onbloggie.netlify.app", "https://bloggie.onrender.com"],
+  })
+);
 //adding path for storing image files when uploaded
 app.use("/images", express.static(path.join(__dirname, "/images")));
 //mongoose connection statement
